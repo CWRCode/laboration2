@@ -9,7 +9,7 @@ public class EmployeeRepositoryStub implements EmployeeRepository {
     }
 
     @Override
-    public Employee save(Employee e) {
+    public void save(Employee e) {
         throw new RuntimeException();
     }
 }
