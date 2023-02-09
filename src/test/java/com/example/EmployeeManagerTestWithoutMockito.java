@@ -17,6 +17,18 @@ public class EmployeeManagerTestWithoutMockito {
         Assertions.assertEquals(EmployeeRepositoryStub.findAll(), List.of(employee));
     }
 
+    @Test
+    public void TestMethodPayShouldReturnOneWhenPayEmployeesIsCalled() {
+
+        BankServiceSpy bankServiceSpy = new BankServiceSpy();
+        EmployeeRepositoryStub EmployeeRepositoryStub = new EmployeeRepositoryStub();
+
+        EmployeeManager employeeManager = new EmployeeManager(EmployeeRepositoryStub,bankServiceSpy);
+        employeeManager.payEmployees();
+
+        Assertions.assertEquals(1, bankServiceSpy.getPayments());
+    }
+
 
 
 }
