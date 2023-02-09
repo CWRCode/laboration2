@@ -35,6 +35,16 @@ public class EmployeeManagerTestWithMockito {
         employeeManager.payEmployees();
 
         verify(employeeRepository, atLeastOnce()).findAll();
+    }
+
+    @Test
+    public void testPayShouldBeCalledAtLeastOnce(){
+
+        when(employeeRepository.findAll()).thenReturn(List.of(new Employee("1",18000)));
+
+        employeeManager.payEmployees();
+
+        verify(bankService, atLeastOnce()).pay("1",18000);
 
 
     }
